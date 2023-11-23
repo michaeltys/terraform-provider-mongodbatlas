@@ -13,7 +13,7 @@ export PATH := ./bin:$(PATH)
 
 default: build
 
-build: fmtcheck
+build: fmt
 	go install
 
 test: fmtcheck
@@ -25,6 +25,7 @@ testacc: fmtcheck
 fmt:
 	@echo "==> Fixing source code with gofmt..."
 	gofmt -s -w ./main.go
+	gofmt -s -w ./tools.go
 	gofmt -s -w ./$(PKG_NAME)
 
 # Currently required by tf-deploy compile
